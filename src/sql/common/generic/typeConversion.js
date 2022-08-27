@@ -14,9 +14,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { TypeConversion } from '../types';
-
-export const TYPE_CONVERSION: TypeConversion = {
+export const TYPE_CONVERSION = {
   BOOLEAN: {
     BOOLEAN: true,
     TIMESTAMP: false,

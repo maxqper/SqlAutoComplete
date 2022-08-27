@@ -14,11 +14,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { TypeConversion } from './types';
 import { TYPE_CONVERSION as GENERIC_TYPE_CONVERSION } from './generic/typeConversion';
 
-const stripPrecision = (types: string[]): string[] => {
-  const result: string[] = [];
+const stripPrecision = (types) => {
+  const result = [];
   types.forEach(type => {
     if (type.indexOf('(') > -1) {
       result.push(type.substring(0, type.indexOf('(')));
@@ -30,7 +29,7 @@ const stripPrecision = (types: string[]): string[] => {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const getTypeConversion = (dialect: string): TypeConversion => {
+const getTypeConversion = (dialect) => {
   return GENERIC_TYPE_CONVERSION;
 };
 
@@ -38,10 +37,10 @@ const getTypeConversion = (dialect: string): TypeConversion => {
  * Matches types based on implicit conversion i.e. if you expect a BIGINT then INT is ok but not BOOLEAN etc.
  */
 export const matchesType = (
-  dialect: string,
-  expectedTypes: string[],
-  actualRawTypes: string[]
-): boolean => {
+  dialect,
+  expectedTypes,
+  actualRawTypes
+) => {
   if (expectedTypes.length === 1 && expectedTypes[0] === 'T') {
     return true;
   }
