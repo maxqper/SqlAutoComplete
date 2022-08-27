@@ -2,7 +2,6 @@
   "name": "sql-auto-completer",
   "version": "0.0.1",
   "description": "SQL auto completer.",
-  "type": "module",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "~5.26",
     "@typescript-eslint/parser": "~5.26",
