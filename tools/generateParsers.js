@@ -49,9 +49,9 @@ const JISON_FOLDER = '../src/jison/';
 const SQL_PARSER_REPOSITORY_PATH =
   '../src/types/sqlParserRepository.ts';
 const SYNTAX_PARSER_IMPORT_TEMPLATE =
-  '  KEY: () => import(/* webpackChunkName: "KEY-parser" */ \'./KEY/KEYSyntaxParser\')';
+  '  KEY: () => import(/* webpackChunkName: "KEY-parser" */ \'../sql/KEY/KEYSyntaxParser\')';
 const AUTOCOMPLETE_PARSER_IMPORT_TEMPLATE =
-  '  KEY: () => import(/* webpackChunkName: "KEY-parser" */ \'./KEY/KEYAutocompleteParser\')';
+  '  KEY: () => import(/* webpackChunkName: "KEY-parser" */ \'../sql/KEY/KEYAutocompleteParser\')';
 
 const parserDefinitions = {
   globalSearchParser: {
@@ -225,6 +225,28 @@ const addParserDefinition = (sources, dialect, autocomplete, lexer) => {
     target: 'sql/' + dialect + '/' + parserName + '.jison',
     sqlParser: autocomplete ? 'AUTOCOMPLETE' : 'SYNTAX',
     outputFolder: OUTPUT_FOLDER + 'sql/' + dialect + '/',
+    // afterParse: contents =>
+    //   new Promise(resolve => {
+    //     resolve(
+    //       LICENSE +
+    //         contents
+    //           .replace(
+    //             'var ' + parserName + ' = ',
+    //             "import SqlParseSupport from 'parse/sql/" +
+    //               dialect +
+    //               "/sqlParseSupport';\n\nvar " +
+    //               parserName +
+    //               ' = '
+    //           )
+    //           .replace(
+    //             'loc: yyloc,',
+    //             "loc: lexer.yylloc, ruleId: stack.slice(stack.length - 2, stack.length).join(''),"
+    //           ) +
+    //         '\nexport default ' +
+    //         parserName +
+    //         ';\n'
+    //     );
+    //   })
     afterParse: contents =>
       new Promise(resolve => {
         resolve(
@@ -232,9 +254,7 @@ const addParserDefinition = (sources, dialect, autocomplete, lexer) => {
             contents
               .replace(
                 'var ' + parserName + ' = ',
-                "import SqlParseSupport from 'parse/sql/" +
-                  dialect +
-                  "/sqlParseSupport';\n\nvar " +
+                "import SqlParseSupport from './sqlParseSupport';\n\nvar " +
                   parserName +
                   ' = '
               )
