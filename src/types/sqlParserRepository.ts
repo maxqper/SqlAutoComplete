@@ -21,10 +21,10 @@ import { AutocompleteParser, SqlParserProvider, SyntaxParser } from './types';
  * AUTOCOMPLETE_MODULES and SYNTAX_MODULES are generated, do not edit manually, see tools/jison/generateParsers.js
  */
 const AUTOCOMPLETE_MODULES = {
-  generic: () => import(/* webpackChunkName: "generic-parser" */ '../sql/generic/genericAutocompleteParser')
+  generic: () => import(/* webpackChunkName: "generic-parser" */ '../sql/generic/genericAutocompleteParser.js')
 };
 const SYNTAX_MODULES = {
-  generic: () => import(/* webpackChunkName: "generic-parser" */ '../sql/generic/genericSyntaxParser')
+  generic: () => import(/* webpackChunkName: "generic-parser" */ '../sql/generic/genericSyntaxParser.js')
 };
 /* eslint-enable */
 

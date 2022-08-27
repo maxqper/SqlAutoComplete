@@ -49,9 +49,9 @@ const JISON_FOLDER = '../src/jison/';
 const SQL_PARSER_REPOSITORY_PATH =
   '../src/types/sqlParserRepository.ts';
 const SYNTAX_PARSER_IMPORT_TEMPLATE =
-  '  KEY: () => import(/* webpackChunkName: "KEY-parser" */ \'../sql/KEY/KEYSyntaxParser\')';
+  '  KEY: () => import(/* webpackChunkName: "KEY-parser" */ \'../sql/KEY/KEYSyntaxParser.js\')';
 const AUTOCOMPLETE_PARSER_IMPORT_TEMPLATE =
-  '  KEY: () => import(/* webpackChunkName: "KEY-parser" */ \'../sql/KEY/KEYAutocompleteParser\')';
+  '  KEY: () => import(/* webpackChunkName: "KEY-parser" */ \'../sql/KEY/KEYAutocompleteParser.js\')';
 
 const parserDefinitions = {
   globalSearchParser: {
@@ -254,7 +254,7 @@ const addParserDefinition = (sources, dialect, autocomplete, lexer) => {
             contents
               .replace(
                 'var ' + parserName + ' = ',
-                "import SqlParseSupport from './sqlParseSupport';\n\nvar " +
+                "import SqlParseSupport from './sqlParseSupport.js';\n\nvar " +
                   parserName +
                   ' = '
               )

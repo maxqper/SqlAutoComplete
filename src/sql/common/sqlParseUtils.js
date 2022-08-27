@@ -14,7 +14,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import stringDistance from './stringDistance';
+import stringDistance from './stringDistance.js';
 
 // endsWith polyfill from hue_utils.js, needed as workers live in their own js environment
 if (!String.prototype.endsWith) {

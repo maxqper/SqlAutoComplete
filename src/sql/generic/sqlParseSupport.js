@@ -14,7 +14,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { matchesType } from '../common/typeUtils';
+import { matchesType } from '../common/typeUtils.js';
 import {
   initSharedAutocomplete,
   initSyntaxParser,
@@ -22,7 +22,7 @@ import {
   equalIgnoreCase,
   SIMPLE_TABLE_REF_SUGGESTIONS,
   adjustForPartialBackticks
-} from '../common/sqlParseUtils';
+} from '../common/sqlParseUtils.js';
 
 const initSqlParser = function (parser) {
   initSharedAutocomplete(parser);
